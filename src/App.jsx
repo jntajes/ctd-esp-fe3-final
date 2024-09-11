@@ -18,12 +18,13 @@ function App() {
             <Route path="/dentist/:id" element={<Detail />} />
             <Route path="/favs" element={<Favs />} />
             <Route
-              path="/notFound"
+              path="*"
               element={<h1>Error 404 - Page not Found</h1>}
             />
           </Routes>
           <Footer/>
-        </BrowserRouter>
+        </BrowserRouter> 
+        {/* capas debemos sacarlo a main.jsx */}
       </div>
   );
 }

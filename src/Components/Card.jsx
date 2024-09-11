@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Card = ({dentist}) => {
   const { name, username, id } = dentist;
+  const navigate = useNavigate();
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
     let favs = JSON.parse(localStorage.getItem('favs')) || [];
@@ -13,10 +14,11 @@ const Card = ({dentist}) => {
   }
 
   const handleClick = ()=>{
-    <Link to={"/dentist/:" + {id}} />
+    console.log(id);
+    navigate(`/dentist/${id}`); 
   }
-  console.log(dentist);
-  console.log(dentist.username);
+  // console.log(dentist);
+  // console.log(dentist.username);
   
   return (
     <div className="card" onClick={handleClick}>
