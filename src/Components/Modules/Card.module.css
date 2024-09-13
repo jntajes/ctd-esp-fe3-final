@@ -1,0 +1,77 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 18%;
+  background-color: #d5d7f0;
+  border-radius: 10px;
+  box-shadow: -1rem 0 1rem #0000008c;
+  margin-left: -50px;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+}
+
+.card_img {
+  width: 80%;
+}
+
+.card_fav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5%;
+  margin-left: 5%;
+  font-weight: 500;
+}
+
+.card_column {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: rgb(187, 197, 194);
+  font-weight: 500;
+  font-size: 85%;
+  margin: 0% 5%;
+}
+
+.card:not(:first-child) {
+  margin-left: -50px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+
+.title {
+  color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.favButton {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #ccc; /* Color de estrella no activa */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.favButtonActive {
+  color: #ffe786; /* Color de estrella activa */
+}
+
+.favButton:hover {
+  color: #00fecf; /* Color de estrella en hover */
+}

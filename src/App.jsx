@@ -10,13 +10,15 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/dentist/:id" element={<Detail />} />
-        <Route path="/favs" element={<Favs />} />
-        <Route path="*" element={<h1>Error 404 - Page not Found</h1>} />
-      </Routes>
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dentist/:id" element={<Detail />} />
+          <Route path="/favs" element={<Favs />} />
+          <Route path="*" element={<h1>Error 404 - Page not Found</h1>} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
