@@ -1,26 +1,22 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const lsFavs = JSON.parse(localStorage.getItem("favs")) || [];
 
 export const initialState = {
   theme: "light", 
   dentists: [],
-  // favs: JSON.parse(localStorage.getItem("favs")) || []
+  favs: lsFavs,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SET_THEME':
-      // console.log("Cambie de tema");
+    case 'TOGGEL_THEME':
       return { ...state, theme: action.payload };
     case 'SET_DENTISTS':
-      console.log(action.payload);
       return { ...state, dentists: action.payload };
-    // case 'ADD_FAV':
-    //   const updatedFavs = [...state.favs, action.payload];
-    //   localStorage.setItem("favs", JSON.stringify(updatedFavs));
-    //   return { ...state, favs: updatedFavs}
+    case 'TOGGEL_FAVS':
+      return { ...state, favs: action.payload };
     default:
       return state;
   }
@@ -29,36 +25,42 @@ const reducer = (state, action) => {
 export const ContextGlobal = createContext();
 
 const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
   const url = "https://jsonplaceholder.typicode.com/users";
-  
-  // const [theme, setTheme] = useState();
-  // const [list, setList] = useState([]);
-  const [favs, setFavs] = useState(lsFavs); 
+
+  // const [favs, setFavs] = useState(lsFavs); 
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
     axios(url).then((res) => {
-      console.log(res.data);
-      // setList(res.data);
       dispatch({type: "SET_DENTISTS", payload: res.data})
     });
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("favs", JSON.stringify(favs));
-  }, [favs]);
+    localStorage.setItem("favs", JSON.stringify(state.favs));
+  }, [state.favs]);
+  
+  console.log(state.favs);
+
+  const toggleFavs = (dentist) => {
+    const isFav = state.favs.some(fav => fav.id === dentist.id);
+    const updatedFavs = isFav ? state.favs.filter(fav => fav.id !== dentist.id) : [...state.favs, dentist];
+    dispatch({
+      type: 'TOGGEL_FAVS',
+      payload: updatedFavs,
+    })
+  }
 
   const toggleTheme = () => {
     dispatch({
-      type: 'SET_THEME',
+      type: 'TOGGEL_THEME',
       payload: state.theme === 'light' ? 'dark' : 'light',
     })
   }
 
   return (
-    <ContextGlobal.Provider value={{state, dispatch, toggleTheme, favs, setFavs}}>
+    <ContextGlobal.Provider value={{state, dispatch, toggleTheme, toggleFavs}}>
       {children}
     </ContextGlobal.Provider>
   );
