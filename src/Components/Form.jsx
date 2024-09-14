@@ -65,7 +65,7 @@ const Form = () => {
             <button>Enviar</button>
           </form>
         </>
-      )};
+      )}
 
       {error ? (
         <h4 style={{color: "red"}}>

@@ -1,0 +1,84 @@
+.contact {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem 3rem;
+    background: #98add3;
+  }
+
+
+  
+  /* Estilos para el tema light */
+  .light.contact {
+    background-color: #ffffff;
+    color: #333333;
+  }
+  
+  .light.contact h2 {
+    color: #111111;
+  }
+  
+  .light.contact p {
+    color: #555555;
+  }
+  
+  /* Estilos para el tema dark */
+  .dark.contact {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+  }
+  
+  .dark.contact h2 {
+    color: #e0e0e0;
+  }
+  
+  .dark.contact p {
+    color: #b0b0b0;
+  }
+  
+  /* Estilos para el formulario */
+  .contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 60%;
+  }
+  
+  .contact input, .contact textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .contact input:focus, .contact textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .contact button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact button:hover {
+    background-color: #0056b3;
+  }
+  
+  .contact button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }

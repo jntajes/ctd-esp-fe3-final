@@ -24,13 +24,20 @@ const Detail = () => {
 
   return (
     <>
-      <div className={`home ${state.theme}`}>
-        <h1>Detail Dentist {dentist.id} </h1>
-        {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-        <h3>Nombre del dentista: {dentist.name}</h3>
-        <h3>Email: {dentist.email}</h3>
-        <h3>Telefono: {dentist.phone}</h3>
-        <h3>Sitio web: {dentist.website}</h3>
+      <div className={`${state.theme}`} style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", padding: "0 10%"}}>
+        <img
+          src="../../public/images/doctor.jpg"
+          alt="doctor"
+          // className={CardStyles.card_img}
+        />
+        <div>
+          <h1>Detail Dentist {dentist.id} </h1>
+          {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
+          <h3>Nombre del dentista: {dentist.name}</h3>
+          <h3>Email: {dentist.email}</h3>
+          <h3>Telefono: {dentist.phone}</h3>
+          <h3>Sitio web: {dentist.website}</h3>
+        </div>
       </div>
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
     </>
